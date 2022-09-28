@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour {
             return;
         PlayerDown(false);
 
+        Debug.Log("morreu");
         GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
         GameManager.Instance.StopGame();
         Debug.Log("Morreu");

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,10 +26,6 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameState.Jogando;
         GetPoints(0);
-        // o Invoke Repeating abaixo chama o método SummonObstacles() depois de 1 segundo
-        // e o chama de novo a cada 3 segundos 
-        // InvokeRepeating("SummonObstacles", 1, 3);
-        // InvokeRepeating("SummonCoins", 2.5f, 3);
     }
 
     public void ChangeGameState(GameState state)
@@ -56,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         CancelInvoke();
+        SceneManager.LoadScene("Derrota");
         //ChangeGameState(GameState.Morreu);
     }
 
@@ -63,5 +61,8 @@ public class GameManager : MonoBehaviour
     {
         points += p;
         _Text.text = $"{points}/{maxPoints}";
+
+        if (points >= 10)
+            SceneManager.LoadScene("Vitoria");
     }
 }
