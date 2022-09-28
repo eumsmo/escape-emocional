@@ -21,8 +21,10 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     public float groundPos;
 
+    public ChaoDetecter chaoDetecter;
+
     public bool isGrounded() {
-        return transform.position.y <= groundPos;
+        return chaoDetecter.isOnFloor; //transform.position.y <= groundPos;
     }
     
     void Start() {
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         groundPos = transform.position.y;
         originalCamPos = cameraObj.transform.position;
         cameraTarget = originalCamPos;
+        currentPos = PlayerPos.Middle;
     }
 
     void PlayerDown(bool estado) {
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour {
             if (movimento == "cima" && isGrounded()) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 PlayerDown(false);
+                chaoDetecter.isOnFloor = false;
             } else if (movimento == "baixo") {
                 PlayerDown(true);
                 if (!isGrounded())
@@ -101,5 +105,17 @@ public class PlayerController : MonoBehaviour {
         } else if (downTime < 0) {
             PlayerDown(false);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        GameObject objeto = collision.gameObject;
+        if (objeto.tag != "Obstacle")
+            return;
+        PlayerDown(false);
+
+        GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
+        GameManager.Instance.StopGame();
+        Debug.Log("Morreu");
     }
 }
