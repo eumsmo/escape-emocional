@@ -106,17 +106,4 @@ public class PlayerController : MonoBehaviour {
             PlayerDown(false);
         }
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        GameObject objeto = collision.gameObject;
-        if (objeto.tag != "Obstacle")
-            return;
-        PlayerDown(false);
-
-        Debug.Log("morreu");
-        GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
-        GameManager.Instance.StopGame();
-        Debug.Log("Morreu");
-    }
 }
