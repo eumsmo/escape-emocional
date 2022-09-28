@@ -3,6 +3,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     enum PlayerPos { Left, Right, Middle };
 
+    public GameObject cameraObj;
+    public float offsetCam;
+    Vector3 originalCamPos, cameraTarget;
+
     PlayerPos currentPos;
     Vector3 targetPosition;
     public float laneSwitchSpeed;
@@ -25,6 +29,8 @@ public class PlayerController : MonoBehaviour {
         //currentPos = PlayerPos.Middle;
         rb = GetComponent<Rigidbody>();
         groundPos = transform.position.y;
+        originalCamPos = cameraObj.transform.position;
+        cameraTarget = originalCamPos;
     }
 
     void PlayerDown(bool estado) {
@@ -56,9 +62,12 @@ public class PlayerController : MonoBehaviour {
             if (movimento == "esquerda" && currentPos != PlayerPos.Left) {
                 if (currentPos == PlayerPos.Right) {
                     targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
                     currentPos = PlayerPos.Middle;
                 } else {
                     targetPosition = new Vector3(-1, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    cameraTarget.x -= offsetCam;
                     currentPos = PlayerPos.Left;
                 }
             }
@@ -66,9 +75,12 @@ public class PlayerController : MonoBehaviour {
             if (movimento == "direita" && currentPos != PlayerPos.Right) {
                 if (currentPos == PlayerPos.Left) {
                     targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
                     currentPos = PlayerPos.Middle;
                 } else {
                     targetPosition = new Vector3(1, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    cameraTarget.x += offsetCam;
                     currentPos = PlayerPos.Right;
                 }
             }
@@ -80,6 +92,9 @@ public class PlayerController : MonoBehaviour {
         targetPosition.y = transform.position.y;
         targetPosition.z = transform.position.z;
         this.gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.fixedDeltaTime);
+        
+        cameraObj.transform.position = Vector3.Lerp(cameraObj.transform.position, cameraTarget, laneSwitchSpeed * Time.fixedDeltaTime);
+
 
         if (downTime > 0) {
             downTime -= Time.fixedDeltaTime;
