@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Text _Text;
     private int points = 0;
+    public int maxPoints = 10;
 
     private void Awake()
     {
@@ -61,6 +62,6 @@ public class GameManager : MonoBehaviour
     public void GetPoints(int p)
     {
         points += p;
-        _Text.text = "Pontos: " + points;
+        _Text.text = $"{points}/{maxPoints}";
     }
 }

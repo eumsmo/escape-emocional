@@ -224,10 +224,10 @@ RectTransform:
   m_Father: {fileID: 1811028076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -50}
-  m_SizeDelta: {x: 160, y: 60}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -124.817505, y: -86.8331}
+  m_SizeDelta: {x: 207.6318, y: 126.4764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371941158
 MonoBehaviour:
@@ -266,18 +266,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 3
+    m_MinSize: 0
+    m_MaxSize: 64
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Pontos:'
+  m_Text: 00/10
 --- !u!222 &371941160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -700,6 +700,7 @@ MonoBehaviour:
   obstacle: {fileID: 4900308032598945082, guid: e513e2c2202de4f9e81fb8cc66c85bc2, type: 3}
   coin: {fileID: 1398970585381783729, guid: 616202cb86cfa49b388c788f83e420da, type: 3}
   _Text: {fileID: 371941159}
+  maxPoints: 10
 --- !u!4 &643790318
 Transform:
   m_ObjectHideFlags: 0
@@ -1307,7 +1308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
