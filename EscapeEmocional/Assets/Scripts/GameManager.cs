@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
         GetPoints(0);
         // o Invoke Repeating abaixo chama o método SummonObstacles() depois de 1 segundo
         // e o chama de novo a cada 3 segundos 
-        InvokeRepeating("SummonObstacles", 1, 3);
-        InvokeRepeating("SummonCoins", 2.5f, 3);
+        // InvokeRepeating("SummonObstacles", 1, 3);
+        // InvokeRepeating("SummonCoins", 2.5f, 3);
     }
 
     public void ChangeGameState(GameState state)
