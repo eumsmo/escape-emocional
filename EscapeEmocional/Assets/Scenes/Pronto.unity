@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -899,14 +900,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.022813248, y: 0.0004239829, z: -0.0014427911, w: 0.99973863}
-  m_LocalPosition: {x: -6.156242e-10, y: 2.369, z: -10.58}
+  m_LocalRotation: {x: 0.115563914, y: 0.00028815333, z: -0.001475932, w: 0.993299}
+  m_LocalPosition: {x: 0, y: 3.47, z: -10.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 2.614, y: 0.045, z: -0.164}
+  m_LocalEulerAnglesHint: {x: 13.272, y: 0.014, z: -0.169}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +950,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d70cea12b364a309a4ac9248fbcbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneSwitchSpeed: 7.5
+  cameraObj: {fileID: 963194225}
+  offsetCam: 0
+  laneSwitchSpeed: 7
   player: {fileID: 500424520}
   playerDown: {fileID: 392898285}
   jump: {x: 0, y: 2, z: 0}
@@ -1126,7 +1129,7 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   startPoint: {fileID: 1919823001}
   tilesPrefab: {fileID: 4065100345698229442, guid: 84b3a1b0a686d9d4bb4515fe3648ad49, type: 3}
-  moveSpeed: 12
+  moveSpeed: 8
   tilesPreSpawn: 5
   tilesNoObstacle: 1
 --- !u!4 &1780836452
