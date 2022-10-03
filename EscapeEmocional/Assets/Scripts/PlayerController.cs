@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour {
     Vector3 targetPosition;
     public float laneSwitchSpeed;
 
-    public GameObject player, playerDown;
+    public int activePlayerIndex = 0;
+    public GameObject[] players;
+    GameObject player;
 
     GestosController controladorGestos = new GestosController();
 
@@ -26,7 +28,31 @@ public class PlayerController : MonoBehaviour {
     public bool isGrounded() {
         return chaoDetecter.isOnFloor; //transform.position.y <= groundPos;
     }
+
+    public void EscolhePersonagem(int personagemId) {
+        activePlayerIndex = personagemId;
+        if (player != null)
+            player.SetActive(false);
+
+        player = players[activePlayerIndex];
+        player.SetActive(true);
+    }
     
+    void PlayerDown(bool estado) {
+        GameObject playerUp = player.transform.Find("EmPe").gameObject;
+        GameObject playerDown = player.transform.Find("Deitado").gameObject;
+
+        if (estado) {
+            playerUp.SetActive(false);
+            playerDown.SetActive(true);
+            downTime = downTimer;
+        } else {
+            playerUp.SetActive(true);
+            playerDown.SetActive(false);
+            downTime = 0;
+        }
+    }
+
     void Start() {
         //currentPos = PlayerPos.Middle;
         rb = GetComponent<Rigidbody>();
@@ -34,18 +60,7 @@ public class PlayerController : MonoBehaviour {
         originalCamPos = cameraObj.transform.position;
         cameraTarget = originalCamPos;
         currentPos = PlayerPos.Middle;
-    }
-
-    void PlayerDown(bool estado) {
-        if (estado) {
-            player.SetActive(false);
-            playerDown.SetActive(true);
-            downTime = downTimer;
-        } else {
-            player.SetActive(true);
-            playerDown.SetActive(false);
-            downTime = 0;
-        }
+        EscolhePersonagem(FaseMaster.faseId);
     }
 
     void Update() {
