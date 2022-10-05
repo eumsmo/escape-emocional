@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour {
     public float groundPos;
 
     public ChaoDetecter chaoDetecter;
+    public bool usarTeclado = false;
+    public bool isInGround = false;
 
     public bool isGrounded() {
         return chaoDetecter.isOnFloor; //transform.position.y <= groundPos;
@@ -64,9 +66,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && controladorGestos.ChecaGestos()) {
+        bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
+        isInGround = chaoDetecter.isOnFloor;
+
+        if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput) {
             string movimento = controladorGestos.movimento;
-            Debug.Log(movimento);
 
             if (movimento == "cima" && isGrounded()) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
