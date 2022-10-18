@@ -5269,7 +5269,7 @@ MonoBehaviour:
   lastObstacle: 0
   canRepeatLastObstacle: 1
   extraController: {fileID: 1073061068885521946}
-  probabilityToBeCalled: 1
+  probabilityToBeCalled: 0.5
 --- !u!1 &4065100346433185985
 GameObject:
   m_ObjectHideFlags: 0

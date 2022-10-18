@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour {
     public ChaoDetecter chaoDetecter;
     public bool usarTeclado = false;
     public bool isInGround = false;
+    public float distToGround;
 
-    public bool isGrounded() {
-        return chaoDetecter.isOnFloor; //transform.position.y <= groundPos;
-    }
+
 
     public void EscolhePersonagem(int personagemId) {
         activePlayerIndex = personagemId;
@@ -38,6 +37,8 @@ public class PlayerController : MonoBehaviour {
 
         player = players[activePlayerIndex];
         player.SetActive(true);
+
+        
     }
     
     void PlayerDown(bool estado) {
@@ -65,20 +66,23 @@ public class PlayerController : MonoBehaviour {
         EscolhePersonagem(FaseMaster.faseId);
     }
 
+    public bool taNoChao;
+
     void Update() {
+        taNoChao = IsGrounded();
         bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
         isInGround = chaoDetecter.isOnFloor;
 
         if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput) {
             string movimento = controladorGestos.movimento;
 
-            if (movimento == "cima" && isGrounded()) {
+            if (movimento == "cima" && IsGrounded()) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 PlayerDown(false);
                 chaoDetecter.isOnFloor = false;
             } else if (movimento == "baixo") {
                 PlayerDown(true);
-                if (!isGrounded())
+                if (!IsGrounded())
                     rb.AddForce(down * downForce, ForceMode.Impulse);
             }
 
@@ -125,4 +129,10 @@ public class PlayerController : MonoBehaviour {
             PlayerDown(false);
         }
     }
+
+
+    public bool IsGrounded() {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    }
+
 }
