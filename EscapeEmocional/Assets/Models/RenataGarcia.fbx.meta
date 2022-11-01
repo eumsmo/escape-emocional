@@ -2,43 +2,7 @@ fileFormatVersion: 2
 guid: 9b93ab7c0a0c79143bffc7cdc4dd7efd
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 9145570209160038808
-    second: Corpo|Cube.002Action
-  - first:
-      74: 3770146801202529765
-    second: Corpo|CubeAction
-  - first:
-      74: 5201302934668520386
-    second: Corpo|EmptyAction
-  - first:
-      74: -3735877524020749953
-    second: Corpo|EmptyAction.002
-  - first:
-      74: -8908026092394928391
-    second: Corpo|FrenteAction
-  - first:
-      74: 1192398492050344891
-    second: Corpo|LadoAction
-  - first:
-      74: -593051447114074248
-    second: Guitarra|Cube.002Action
-  - first:
-      74: -663237438357546163
-    second: Guitarra|CubeAction
-  - first:
-      74: -620528753544595556
-    second: Guitarra|EmptyAction
-  - first:
-      74: -7349265514884010613
-    second: Guitarra|EmptyAction.002
-  - first:
-      74: -4039968640266876061
-    second: Guitarra|FrenteAction
-  - first:
-      74: 2928051280014593462
-    second: Guitarra|LadoAction
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
