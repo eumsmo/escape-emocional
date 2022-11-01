@@ -42,4 +42,20 @@ public class GestosController {
         
         return false;
     }
+
+    public bool InputTeclado() {
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("up")) {
+            movimento = "cima";
+        } else if (Input.GetKeyDown("s") || Input.GetKeyDown("down")) {
+            movimento = "baixo";
+        } else if (Input.GetKeyDown("a") || Input.GetKeyDown("left")) {
+            movimento = "esquerda";
+        }  else if (Input.GetKeyDown("d") || Input.GetKeyDown("right")) {
+            movimento = "direita";
+        } else {
+            movimento = "";
+            return false;
+        }
+        return true;
+    }
 }
