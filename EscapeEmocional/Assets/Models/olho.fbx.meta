@@ -3,7 +3,12 @@ guid: f0cfb5dd72831e04d9d5cc083632a627
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carne
+    second: {fileID: 2100000, guid: 6b9e597881054df438bb4bff1ca6e6d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
