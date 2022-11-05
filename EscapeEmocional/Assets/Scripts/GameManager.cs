@@ -5,21 +5,24 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    
     public enum GameState { Jogando, Morreu, Pausa }
 
     private GameState currentState;
 
     public GameObject obstacle;
     public GameObject coin;
+    
 
     public Text _Text;
     private int points = 0;
     public int maxPoints = 10;
 
+
     private void Awake()
     {
         Instance = this;
+        
     }
 
     private void Start()
@@ -52,11 +55,18 @@ public class GameManager : MonoBehaviour
 
     public void StopGame()
     {
-        CancelInvoke();
-        SceneManager.LoadScene("Derrota");
-        //ChangeGameState(GameState.Morreu);
+        PlayerController.isAlive = false;
+        Invoke("perdeu", 1f);
+        
+
     }
 
+    public void perdeu()
+    {
+
+        SceneManager.LoadScene("Derrota");
+
+    }
     public void GetPoints(int p)
     {
         points += p;

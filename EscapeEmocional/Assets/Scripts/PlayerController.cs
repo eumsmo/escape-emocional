@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] players;
     GameObject player;
 
+    public static bool isAlive = true;
+
+
+
     GestosController controladorGestos = new GestosController();
 
     public Vector3 jump = new Vector3(0.0f, 2.0f, 0.0f);
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         //currentPos = PlayerPos.Middle;
+        isAlive = true;
         rb = GetComponent<Rigidbody>();
         groundPos = transform.position.y;
         originalCamPos = cameraObj.transform.position;
@@ -69,53 +74,68 @@ public class PlayerController : MonoBehaviour {
     public bool taNoChao;
 
     void Update() {
-        taNoChao = IsGrounded();
-        bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
-        isInGround = chaoDetecter.isOnFloor;
+        if (isAlive == true) 
+        {
+            taNoChao = IsGrounded();
+            bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
+            isInGround = chaoDetecter.isOnFloor;
 
-        if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput) {
-            string movimento = controladorGestos.movimento;
+            if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput)
+            {
+                string movimento = controladorGestos.movimento;
 
-            if (movimento == "cima" && IsGrounded()) {
-                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                PlayerDown(false);
-                chaoDetecter.isOnFloor = false;
-            } else if (movimento == "baixo") {
-                PlayerDown(true);
-                if (!IsGrounded())
-                    rb.AddForce(down * downForce, ForceMode.Impulse);
-            }
+                if (movimento == "cima" && IsGrounded())
+                {
+                    rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                    PlayerDown(false);
+                    chaoDetecter.isOnFloor = false;
+                }
+                else if (movimento == "baixo")
+                {
+                    PlayerDown(true);
+                    if (!IsGrounded())
+                        rb.AddForce(down * downForce, ForceMode.Impulse);
+                }
 
-            if (movimento == "esquerda" && currentPos != PlayerPos.Left) {
-                if (currentPos == PlayerPos.Right) {
-                    targetPosition = new Vector3(0, transform.position.y, transform.position.z);
-                    cameraTarget = originalCamPos;
-                    currentPos = PlayerPos.Middle;
-                } else {
-                    targetPosition = new Vector3(-1, transform.position.y, transform.position.z);
-                    cameraTarget = originalCamPos;
-                    cameraTarget.x -= offsetCam;
-                    currentPos = PlayerPos.Left;
+                if (movimento == "esquerda" && currentPos != PlayerPos.Left)
+                {
+                    if (currentPos == PlayerPos.Right)
+                    {
+                        targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                        cameraTarget = originalCamPos;
+                        currentPos = PlayerPos.Middle;
+                    }
+                    else
+                    {
+                        targetPosition = new Vector3(-1, transform.position.y, transform.position.z);
+                        cameraTarget = originalCamPos;
+                        cameraTarget.x -= offsetCam;
+                        currentPos = PlayerPos.Left;
+                    }
+                }
+
+                if (movimento == "direita" && currentPos != PlayerPos.Right)
+                {
+                    if (currentPos == PlayerPos.Left)
+                    {
+                        targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                        cameraTarget = originalCamPos;
+                        currentPos = PlayerPos.Middle;
+                    }
+                    else
+                    {
+                        targetPosition = new Vector3(1, transform.position.y, transform.position.z);
+                        cameraTarget = originalCamPos;
+                        cameraTarget.x += offsetCam;
+                        currentPos = PlayerPos.Right;
+                    }
                 }
             }
-
-            if (movimento == "direita" && currentPos != PlayerPos.Right) {
-                if (currentPos == PlayerPos.Left) {
-                    targetPosition = new Vector3(0, transform.position.y, transform.position.z);
-                    cameraTarget = originalCamPos;
-                    currentPos = PlayerPos.Middle;
-                } else {
-                    targetPosition = new Vector3(1, transform.position.y, transform.position.z);
-                    cameraTarget = originalCamPos;
-                    cameraTarget.x += offsetCam;
-                    currentPos = PlayerPos.Right;
-                }
-            }
-            
-        }
+        } 
     }
 
     void FixedUpdate() {
+        if(isAlive == true){
         targetPosition.y = transform.position.y;
         targetPosition.z = transform.position.z;
         this.gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.fixedDeltaTime);
@@ -128,6 +148,7 @@ public class PlayerController : MonoBehaviour {
         } else if (downTime < 0) {
             PlayerDown(false);
         }
+     }
     }
 
 

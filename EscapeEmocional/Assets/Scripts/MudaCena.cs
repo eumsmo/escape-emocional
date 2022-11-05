@@ -5,6 +5,6 @@ public class MudaCena : MonoBehaviour {
     public string cena = "";
 
     public void Trocar() {
-        SceneManager.LoadScene(cena);
+        SceneManager.LoadScene(cena);        
     }
 }
