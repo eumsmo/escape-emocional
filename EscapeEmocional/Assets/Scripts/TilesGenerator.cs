@@ -9,7 +9,7 @@ public class TilesGenerator : MonoBehaviour
     public TilesController tilesPrefab;
     public float moveSpeed = 12;
     public int tilesPreSpawn = 5; // Quantidade de tiles que eu quero ter sempre em cena
-    public int tilesNoObstacle = 3; // Quantidade de tiles sem obstáculos no início do jogo
+    public int tilesNoObstacle = 1; // Quantidade de tiles sem obstáculos no início do jogo
 
     List<TilesController> spawnedTiles = new List<TilesController>(); // Lista de tiles
 
@@ -25,7 +25,7 @@ public class TilesGenerator : MonoBehaviour
         {
             spawnPos -= tilesPrefab.startPoint.position; // Calcula a diferença do offset do tile
             TilesController currentTile = Instantiate(tilesPrefab, spawnPos, Quaternion.identity);
-            if (tilesNoObstacle > 0) { 
+            if (tilesNoObstacleTemp > 0) { 
                 currentTile.DeactivateAllObstacles();
                 tilesNoObstacleTemp--;
             }
