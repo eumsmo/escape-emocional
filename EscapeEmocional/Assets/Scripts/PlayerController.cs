@@ -136,26 +136,25 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    /*
+    void OnDrawGizmos() {
+        Vector3 bottom = playerBottom;
+        Vector3 halfExtends = currentCollider.bounds.extents;
+        halfExtends.y = 0.1f;
+
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(bottom, halfExtends * 2);
+    }
+    */
 
     public bool IsGrounded() {
-        RaycastHit hit;
         Vector3 bottom = playerBottom;
+        Vector3 halfExtends = currentCollider.bounds.extents;
+        halfExtends.y = 0.1f;
 
-        Vector3 centerBehind = currentCollider.bounds.center - new Vector3(0, 0, currentCollider.bounds.extents.z);
-        Vector3 centerFront = currentCollider.bounds.center - new Vector3(0, 0, -currentCollider.bounds.extents.z);
-
-        if (Physics.Raycast(centerBehind, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, groundLayerMask)) {
-            Debug.DrawLine(playerBottom, hit.point);
-            float dist = playerBottom.y - hit.point.y;
-            if (dist < 0.1f)
-                return true; 
-        }
-
-        if (Physics.Raycast(centerFront, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, groundLayerMask)) {
-            Debug.DrawLine(playerBottom, hit.point);
-            float dist = playerBottom.y - hit.point.y;
-            if (dist < 0.1f)
-                return true;
+        // Check if box below player is grounded
+        if (Physics.CheckBox(bottom, halfExtends, Quaternion.identity, groundLayerMask)) {
+            return true;
         }
 
         return false;
