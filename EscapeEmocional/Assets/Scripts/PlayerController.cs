@@ -21,13 +21,21 @@ public class PlayerController : MonoBehaviour {
     public Vector3 down = new Vector3(0.0f, -2.0f, 0.0f);
     public float jumpForce = 2.0f, downForce = 4.0f, downTime = 0f, downTimer = 1.0f;
     Rigidbody rb;
-    public float groundPos;
 
-    public ChaoDetecter chaoDetecter;
     public bool usarTeclado = false;
-    public bool isInGround = false;
-    public float distToGround;
 
+    public LayerMask groundLayerMask;
+    public bool taNoChao;
+    BoxCollider currentCollider;
+
+    void UpdateCurrentCollider() {
+        string estadoPlayer = downTime == 0 ? "EmPe" : "Deitado";
+        currentCollider = player.transform.Find(estadoPlayer).gameObject.GetComponent<BoxCollider>();
+    }
+
+    public Vector3 playerBottom {
+        get { return currentCollider.bounds.center - new Vector3(0, currentCollider.bounds.extents.y, 0); }
+    }
 
 
     public void EscolhePersonagem(int personagemId) {
@@ -38,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         player = players[activePlayerIndex];
         player.SetActive(true);
 
-        
+        UpdateCurrentCollider();
     }
     
     void PlayerDown(bool estado) {
@@ -54,35 +62,33 @@ public class PlayerController : MonoBehaviour {
             playerDown.SetActive(false);
             downTime = 0;
         }
+
+        UpdateCurrentCollider();
     }
 
     void Start() {
         //currentPos = PlayerPos.Middle;
         rb = GetComponent<Rigidbody>();
-        groundPos = transform.position.y;
         originalCamPos = cameraObj.transform.position;
         cameraTarget = originalCamPos;
         currentPos = PlayerPos.Middle;
         EscolhePersonagem(FaseMaster.faseId);
     }
 
-    public bool taNoChao;
 
     void Update() {
         taNoChao = IsGrounded();
         bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
-        isInGround = chaoDetecter.isOnFloor;
 
         if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput) {
             string movimento = controladorGestos.movimento;
 
-            if (movimento == "cima" && IsGrounded()) {
+            if (movimento == "cima" && taNoChao) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 PlayerDown(false);
-                chaoDetecter.isOnFloor = false;
             } else if (movimento == "baixo") {
                 PlayerDown(true);
-                if (!IsGrounded())
+                if (!taNoChao)
                     rb.AddForce(down * downForce, ForceMode.Impulse);
             }
 
@@ -130,9 +136,28 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    /*
+    void OnDrawGizmos() {
+        Vector3 bottom = playerBottom;
+        Vector3 halfExtends = currentCollider.bounds.extents;
+        halfExtends.y = 0.1f;
+
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(bottom, halfExtends * 2);
+    }
+    */
 
     public bool IsGrounded() {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        Vector3 bottom = playerBottom;
+        Vector3 halfExtends = currentCollider.bounds.extents;
+        halfExtends.y = 0.1f;
+
+        // Check if box below player is grounded
+        if (Physics.CheckBox(bottom, halfExtends, Quaternion.identity, groundLayerMask)) {
+            return true;
+        }
+
+        return false;
     }
 
 }
