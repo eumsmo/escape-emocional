@@ -16,7 +16,6 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("Morreu");
             GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
             GameManager.Instance.StopGame();
         }
