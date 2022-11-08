@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Text _Text;
     private int points = 0;
     public int maxPoints = 10;
+    public static bool isPause = true;
 
 
     private void Awake()

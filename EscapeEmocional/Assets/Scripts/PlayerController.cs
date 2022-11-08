@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour {
 
 
     void Update() {
-        if (isAlive == true) 
+        if (isAlive == true && GameManager.isPause == true) 
         {
             taNoChao = IsGrounded();
             bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
