@@ -10,6 +10,9 @@ public class ColisaoDetector : MonoBehaviour
         if (objeto.tag != "Obstacle")
             return;
 
+        if (GameManager.Instance.isImortal)
+            return;
+            
         GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
         GameManager.Instance.StopGame();
         Debug.Log("Morreu");

@@ -12,28 +12,36 @@ public class TilesController : MonoBehaviour
 
     public TilesController extraController; // Controller auxiliar
     public float probabilityToBeCalled = 1f; // Probabilidade de ser chamado
+    public int maxObstacles = 1; // Máximo de obstáculos
 
 
     public void ActivateRandomObstacle() {
         DeactivateAllObstacles(); // Desliga todos os obstáculos antes de ligar um aleatoriamente
 
-        if (probabilityToBeCalled < 1f && Random.Range(0f, 1f) > probabilityToBeCalled) {
-            return;
-        }
-
-
-        int randomNumber;
-        do {
-            randomNumber = Random.Range(0, obstacles.Length);
-        } while (canRepeatLastObstacle && randomNumber == lastObstacle);
-
-        lastObstacle = randomNumber;
-
+        // Sempre chama o controlador extra, se houver
         if (extraController != null) {
             extraController.ActivateRandomObstacle();
         }
 
-        obstacles[randomNumber].SetActive(true);
+        if (probabilityToBeCalled < 1f && Random.Range(0f, 1f) > probabilityToBeCalled) {
+            return;
+        }
+
+        int randomNumber;
+        if (maxObstacles > 1) {
+            // Escolhe x obstáculos aleatórios
+            for (int i = 0; i < maxObstacles; i++) {
+                randomNumber = Random.Range(0, obstacles.Length);
+                obstacles[randomNumber].SetActive(true);
+            }
+        } else {
+            do {
+                randomNumber = Random.Range(0, obstacles.Length);
+            } while (canRepeatLastObstacle && randomNumber == lastObstacle);
+            lastObstacle = randomNumber;
+            obstacles[randomNumber].SetActive(true);
+        }
+       
     }
 
     public void DeactivateAllObstacles() // Desliga todos os obstáculos
