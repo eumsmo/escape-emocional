@@ -17,7 +17,11 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Ryco");
+            if (GetComponent<AudioSource>() != null) {
+                AudioSource audio = GetComponent<AudioSource>();
+                AudioSource.PlayClipAtPoint(audio.clip, transform.position);
+            }
+
             GameManager.Instance.GetPoints(pontos);
             Destroy(this.gameObject);
         }

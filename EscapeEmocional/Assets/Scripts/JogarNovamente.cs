@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EscolheFase : MonoBehaviour {
-    public int faseId = 0;
-
+public class JogarNovamente : MonoBehaviour {
     public void MudaFase() {
-        FaseMaster.faseId = faseId;
         SceneManager.LoadScene(FaseMaster.GetFaseName());
     }
 }

@@ -1019,8 +1019,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1960638098}
-        m_TargetAssemblyTypeName: MudaCena, Assembly-CSharp
-        m_MethodName: Trocar
+        m_TargetAssemblyTypeName: JogarNovamente, Assembly-CSharp
+        m_MethodName: MudaFase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1077,10 +1077,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1960638093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168152a0a389a8748b97b39f829cb87a, type: 3}
+  m_Script: {fileID: 11500000, guid: f798f92a114fd064d870b9bc0b4a6a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cena: Jogo
 --- !u!1 &2038913943
 GameObject:
   m_ObjectHideFlags: 0

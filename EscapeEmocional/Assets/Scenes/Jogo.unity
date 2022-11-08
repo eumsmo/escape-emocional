@@ -225,7 +225,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 18677891}
         m_TargetAssemblyTypeName: ButtonPause, Assembly-CSharp
-        m_MethodName: pause
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1545,6 +1545,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: ba84bd8c7906b6044be5301b9d730411, type: 2}
   sldVolume: {fileID: 1279639315}
   panel: {fileID: 1141167976}
+  showPanel: 0
 --- !u!114 &583186285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,7 +2488,7 @@ MonoBehaviour:
   downForce: 4
   downTime: 0
   downTimer: 1
-  usarTeclado: 0
+  usarTeclado: 1
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2629,7 +2630,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1018309543}
         m_TargetAssemblyTypeName: ButtonPause, Assembly-CSharp
-        m_MethodName: sairpause
+        m_MethodName: SairPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2841,7 +2842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.42745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.2901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

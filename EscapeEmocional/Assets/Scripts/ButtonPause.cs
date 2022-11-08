@@ -6,20 +6,19 @@ public class ButtonPause : MonoBehaviour
 {
     public static bool pausado = false;
 
-    void Start()
+    void Awake()
     {
-        pausado = false;
+        SairPause();
     }
 
 
-    public void pause()
+    public void Pause()
     {
         Time.timeScale = 0;   
         pausado = true;  
-        
     }
     
-    public void sairpause()
+    public void SairPause()
     {
         Time.timeScale = 1;
         pausado = false;  
