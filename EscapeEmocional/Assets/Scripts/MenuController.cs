@@ -3,10 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuController : MonoBehaviour {
-    public GameObject escolhaFases, jogarBtn;
+    public GameObject escolhaFases, menu;
+    public GameObject[] selecoesFases;
+
+    void Start() {
+        AtualizaUI();
+    }
 
     public void MostraEscolhas() {
         escolhaFases.SetActive(true);
-        jogarBtn.SetActive(false);
+        menu.SetActive(false);
+    }
+
+    public void MostraMenu() {
+        escolhaFases.SetActive(false);
+        menu.SetActive(true);
+    }
+
+    public void SelecionaFaseAnterior() {
+        FaseMaster.faseId--;
+        if (FaseMaster.faseId < 0) {
+            FaseMaster.faseId = selecoesFases.Length - 1;
+        }
+
+        AtualizaUI();
+    }
+
+    public void SelecionaProximaFase() {
+        FaseMaster.faseId++;
+        if (FaseMaster.faseId >= selecoesFases.Length) {
+            FaseMaster.faseId = 0;
+        }
+        AtualizaUI();
+    }
+
+    void AtualizaUI() {
+        for (int i = 0; i < selecoesFases.Length; i++) {
+            selecoesFases[i].SetActive(false);
+        }
+        selecoesFases[FaseMaster.faseId].SetActive(true);
     }
 }

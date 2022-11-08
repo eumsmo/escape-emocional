@@ -1882,8 +1882,8 @@ MonoBehaviour:
   laneSwitchSpeed: 12.5
   activePlayerIndex: 0
   players:
-  - {fileID: 726369135}
   - {fileID: 251497668}
+  - {fileID: 726369135}
   - {fileID: 2023690845}
   - {fileID: 665016500}
   jump: {x: 0, y: 2, z: 0}
@@ -2986,6 +2986,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: ba84bd8c7906b6044be5301b9d730411, type: 2}
   sldVolume: {fileID: 1532833623}
   panel: {fileID: 88871078}
+  showPanel: 0
 --- !u!1 &1664814109
 GameObject:
   m_ObjectHideFlags: 0
