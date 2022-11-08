@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Vitoria.unity
     guid: e4f2259a361047e4299d1df92edf7e06
+  - enabled: 1
+    path: Assets/Scenes/JogoRenata.unity
+    guid: 27ec60bc208ca274fb1f36c0ca0ca516
   m_configObjects: {}
