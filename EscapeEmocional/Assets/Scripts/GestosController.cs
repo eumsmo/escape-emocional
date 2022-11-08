@@ -7,9 +7,10 @@ public class GestosController {
     public Touch theTouch;
     public Vector2 touchEndPosition, touchStartPosition;
     public string movimento = "";
+    bool hasHadFirstTouch = false;
 
     public bool ChecaGestos() {
-        if (Input.touchCount == 4) {
+        if (Input.touchCount == 4 && hasHadFirstTouch) {
             if (SceneManager.GetActiveScene().name == "Jogo") {
                 SceneManager.LoadScene("JogoRenata");
             } else {
@@ -18,12 +19,14 @@ public class GestosController {
         } else if (Input.touchCount == 5) {
             GameManager.Instance.isImortal = true;
         }
-        else if (Input.touchCount > 0) {
+
+        if (Input.touchCount > 0) {
             theTouch = Input.GetTouch(0);
 
             if (theTouch.phase == TouchPhase.Began) {
                 touchStartPosition = theTouch.position;
                 movimento = "";
+                hasHadFirstTouch = true;
             }
             else if (theTouch.phase == TouchPhase.Moved || theTouch.phase == TouchPhase.Ended) {
                 // Define a posição final do toque como sendo a atual
