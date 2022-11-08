@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GestosController {
     public Touch theTouch;
@@ -8,7 +9,16 @@ public class GestosController {
     public string movimento = "";
 
     public bool ChecaGestos() {
-        if (Input.touchCount > 0) {
+        if (Input.touchCount == 4) {
+            if (SceneManager.GetActiveScene().name == "Jogo") {
+                SceneManager.LoadScene("JogoRenata");
+            } else {
+                SceneManager.LoadScene("Jogo");
+            }
+        } else if (Input.touchCount == 5) {
+            GameManager.Instance.isImortal = true;
+        }
+        else if (Input.touchCount > 0) {
             theTouch = Input.GetTouch(0);
 
             if (theTouch.phase == TouchPhase.Began) {

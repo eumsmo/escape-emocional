@@ -6,6 +6,11 @@ public class ButtonPause : MonoBehaviour
 {
     public static bool pausado = false;
 
+    void Start()
+    {
+        pausado = false;
+    }
+
 
     public void pause()
     {

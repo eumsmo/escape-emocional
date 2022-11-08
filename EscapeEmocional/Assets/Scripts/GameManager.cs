@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int maxPoints = 10;
     public static bool isPause = true;
 
+    public bool isImortal = false;
+
 
     private void Awake()
     {
