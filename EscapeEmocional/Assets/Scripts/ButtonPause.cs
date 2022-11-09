@@ -14,8 +14,9 @@ public class ButtonPause : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;   
-        pausado = true;  
+        Time.timeScale = 0;
+        pausado = true;
+        Debug.Log("paus");
     }
     
     public void SairPause()
