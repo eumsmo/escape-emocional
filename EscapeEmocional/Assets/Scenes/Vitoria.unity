@@ -1019,8 +1019,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1960638098}
-        m_TargetAssemblyTypeName: JogarNovamente, Assembly-CSharp
-        m_MethodName: MudaFase
+        m_TargetAssemblyTypeName: JogarFase, Assembly-CSharp
+        m_MethodName: Jogar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

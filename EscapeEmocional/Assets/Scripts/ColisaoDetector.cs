@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColisaoDetector : MonoBehaviour {
     void OnTriggerEnter(Collider collision) {
         GameObject objeto = collision.gameObject;
+        
         if (objeto.tag != "Obstacle")
             return;
 
@@ -13,8 +14,6 @@ public class ColisaoDetector : MonoBehaviour {
             return;
         }
             
-        GameManager.Instance.ChangeGameState(GameManager.GameState.Morreu);
-        GameManager.Instance.StopGame();
-        Debug.Log("Morreu");
+        GameManager.Instance.CurrentState = GameManager.GameState.Morreu;
     }
 }

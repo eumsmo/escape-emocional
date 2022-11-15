@@ -11,12 +11,10 @@ public class GestosController {
 
     public bool ChecaGestos() {
         if (Input.touchCount == 4 && hasHadFirstTouch) {
-            if (SceneManager.GetActiveScene().name == "Jogo") {
-                SceneManager.LoadScene("JogoRenata");
-            } else {
-                SceneManager.LoadScene("Jogo");
-            }
+            // 4 Toques ativam o cheat de trocar de fase
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name == "Jogo" ? "JogoRenata" : "Jogo");
         } else if (Input.touchCount == 5) {
+            // 5 Toques ativam o cheat de ser imortal
             GameManager.Instance.isImortal = true;
         }
 

@@ -40,13 +40,16 @@ public class TilesGenerator : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerController.isAlive == true){
-            transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * moveSpeed); // Move este objeto para frente
+        // Caso o jogo não esteja em andamento, não faz nada
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando)
+            return;
+
+        transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * moveSpeed); // Move este objeto para frente
 
         // Esse if verifica se o objeto 0 da lista (o primeiro) passou da visão da câmera no eixo X negativo,
         // ou seja, se ele está à esquerda da câmera, fora da área de renderização
-            if (mainCamera.WorldToViewportPoint(spawnedTiles[0].endPoint.position).y < -0.3f)
-            {
+        if (mainCamera.WorldToViewportPoint(spawnedTiles[0].endPoint.position).y < -0.3f)
+        {
             // Move o tile pra frente se ele tiver saído da câmera
             TilesController tileTemp = spawnedTiles[0];
             spawnedTiles.RemoveAt(0); // Remove o tile da lista
@@ -54,7 +57,6 @@ public class TilesGenerator : MonoBehaviour
             tileTemp.transform.position = spawnedTiles[spawnedTiles.Count - 1].endPoint.position - tileTemp.startPoint.localPosition;
             tileTemp.ActivateRandomObstacle(); // Ativa um obstáculo aleatório
             spawnedTiles.Add(tileTemp); // Readiciona o tile à lista (no final)
-            }
         }
     }
 }

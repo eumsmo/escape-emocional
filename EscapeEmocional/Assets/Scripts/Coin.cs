@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour {
                 AudioSource.PlayClipAtPoint(audio.clip, transform.position);
             }
 
-            GameManager.Instance.GetPoints(pontos);
+            GameManager.Instance.AddPoints(pontos);
             Destroy(this.gameObject);
         }
     }

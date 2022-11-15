@@ -1,27 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonPause : MonoBehaviour
 {
-    public static bool pausado = false;
+    public GameObject panel;
+
 
     void Awake()
     {
         SairPause();
     }
-
+    
+    public void UpdatePanelVisibility()
+    {
+        bool isGamePaused = GameManager.Instance.CurrentState == GameManager.GameState.Pausa;
+        panel.SetActive(isGamePaused);
+    }
 
     public void Pause()
     {
+        if (GameManager.Instance.CurrentState == GameManager.GameState.Morreu)
+            return;
+
         Time.timeScale = 0;
-        pausado = true;
-        Debug.Log("paus");
+        GameManager.Instance.CurrentState = GameManager.GameState.Pausa;
+        UpdatePanelVisibility();
     }
     
     public void SairPause()
     {
         Time.timeScale = 1;
-        pausado = false;  
+        GameManager.Instance.CurrentState = GameManager.GameState.Jogando;
+        UpdatePanelVisibility();
     }
 }

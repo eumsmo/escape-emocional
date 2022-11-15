@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] players;
     GameObject player;
 
-    public static bool isAlive = true;
-
 
 
     GestosController controladorGestos = new GestosController();
@@ -72,7 +70,6 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         //currentPos = PlayerPos.Middle;
-        isAlive = true;
         rb = GetComponent<Rigidbody>();
         originalCamPos = cameraObj.transform.position;
         cameraTarget = originalCamPos;
@@ -82,14 +79,17 @@ public class PlayerController : MonoBehaviour {
 
 
     void Update() {
-        if (isAlive == true && GameManager.isPause == true) 
-        {
-            taNoChao = IsGrounded();
-            bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
+        // Caso o jogo esteja pausado ou o jogador tenha morrido, não faz nada
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando)
+            return;
 
-            if (GameManager.Instance.CurrentGameState() == GameManager.GameState.Jogando && ocorreuInput)
-            {
-                string movimento = controladorGestos.movimento;
+        // Checa se houve algum input e se o jogador está no chão
+        bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
+        taNoChao = IsGrounded();
+
+        // Caso tenha ocorrido algum input, atualiza a posição do jogador
+        if (ocorreuInput) {
+            string movimento = controladorGestos.movimento;
 
             if (movimento == "cima" && taNoChao) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
@@ -100,70 +100,59 @@ public class PlayerController : MonoBehaviour {
                     rb.AddForce(down * downForce, ForceMode.Impulse);
             }
 
-                if (movimento == "esquerda" && currentPos != PlayerPos.Left)
-                {
-                    if (currentPos == PlayerPos.Right)
-                    {
-                        targetPosition = new Vector3(0, transform.position.y, transform.position.z);
-                        cameraTarget = originalCamPos;
-                        currentPos = PlayerPos.Middle;
-                    }
-                    else
-                    {
-                        targetPosition = new Vector3(-1, transform.position.y, transform.position.z);
-                        cameraTarget = originalCamPos;
-                        cameraTarget.x -= offsetCam;
-                        currentPos = PlayerPos.Left;
-                    }
-                }
 
-                if (movimento == "direita" && currentPos != PlayerPos.Right)
-                {
-                    if (currentPos == PlayerPos.Left)
-                    {
-                        targetPosition = new Vector3(0, transform.position.y, transform.position.z);
-                        cameraTarget = originalCamPos;
-                        currentPos = PlayerPos.Middle;
-                    }
-                    else
-                    {
-                        targetPosition = new Vector3(1, transform.position.y, transform.position.z);
-                        cameraTarget = originalCamPos;
-                        cameraTarget.x += offsetCam;
-                        currentPos = PlayerPos.Right;
-                    }
+            if (movimento == "esquerda" && currentPos != PlayerPos.Left) {
+                if (currentPos == PlayerPos.Right) {
+                    targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    currentPos = PlayerPos.Middle;
+                }
+                else {
+                    targetPosition = new Vector3(-1, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    cameraTarget.x -= offsetCam;
+                    currentPos = PlayerPos.Left;
                 }
             }
-        } 
+
+            if (movimento == "direita" && currentPos != PlayerPos.Right) {
+                if (currentPos == PlayerPos.Left) {
+                    targetPosition = new Vector3(0, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    currentPos = PlayerPos.Middle;
+                }
+                else {
+                    targetPosition = new Vector3(1, transform.position.y, transform.position.z);
+                    cameraTarget = originalCamPos;
+                    cameraTarget.x += offsetCam;
+                    currentPos = PlayerPos.Right;
+                }
+            }
+        }
     }
 
     void FixedUpdate() {
-        if(isAlive == true){
+        // Caso o jogo esteja pausado ou o jogador tenha morrido, não faz nada
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando)
+            return;
+        
+        // Atualiza a posição horizontal do jogador
         targetPosition.y = transform.position.y;
         targetPosition.z = transform.position.z;
-        this.gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.fixedDeltaTime);
+        gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.fixedDeltaTime);
         
+        // Atualiza a posição da câmera
         cameraObj.transform.position = Vector3.Lerp(cameraObj.transform.position, cameraTarget, laneSwitchSpeed * Time.fixedDeltaTime);
 
-
+        // Atualiza o tempo de deitado
         if (downTime > 0) {
             downTime -= Time.fixedDeltaTime;
         } else if (downTime < 0) {
             PlayerDown(false);
         }
-     }
     }
 
-    /*
-    void OnDrawGizmos() {
-        Vector3 bottom = playerBottom;
-        Vector3 halfExtends = currentCollider.bounds.extents;
-        halfExtends.y = 0.1f;
 
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(bottom, halfExtends * 2);
-    }
-    */
 
     public bool IsGrounded() {
         Vector3 bottom = playerBottom;
