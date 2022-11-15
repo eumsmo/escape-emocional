@@ -1276,8 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b92fd7d7db046a180623b39bb6d6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 4900308032598945082, guid: e513e2c2202de4f9e81fb8cc66c85bc2, type: 3}
-  coin: {fileID: 1398970585381783729, guid: 616202cb86cfa49b388c788f83e420da, type: 3}
   _Text: {fileID: 1367336190}
   maxPoints: 10
   isImortal: 0
