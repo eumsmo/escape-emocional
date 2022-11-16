@@ -9,6 +9,8 @@ public class Coin : MonoBehaviour {
             if (GetComponent<AudioSource>() != null) {
                 AudioSource audio = GetComponent<AudioSource>();
                 AudioSource.PlayClipAtPoint(audio.clip, transform.position);
+
+                GameManager.Instance.EaseStress();
             }
 
             GameManager.Instance.AddPoints(pontos);

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     public int maxPoints = 10;
 
     public bool isImortal = false;
-    public float stress = 0, stressGrowth = 0.001f, limiarToDouble = 10;
+    public float stress = 0, stressGrowth = 0.001f, limiarToDouble = 10, stressCap = 100, stressEase = 0.05f;
     public float speedVisualizer;
     public float SpeedMultByStress { get { return 1 + stress / limiarToDouble; } }
 
@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour {
     void FixedUpdate() {
         stress += stressGrowth;
         speedVisualizer = SpeedMultByStress;
+    }
+
+    public void EaseStress() {
+        stress -= stressEase;
+        if (stress < 0)
+            stress = 0;
     }
 
     // Handle de estados

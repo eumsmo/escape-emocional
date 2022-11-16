@@ -584,7 +584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54d0a01743b84fee9b9201f1485afad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   pontos: 1
 --- !u!65 &6073826745569815615
 BoxCollider:
@@ -611,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e634d22530ff74badd0785cb222ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probabilityToBeCalled: 0.3
+  probabilityToBeCalled: 0.5
 --- !u!82 &3144884159740339425
 AudioSource:
   m_ObjectHideFlags: 0

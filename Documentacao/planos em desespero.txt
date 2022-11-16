@@ -1,0 +1,31 @@
+Asset de Lanes
+Assets de obstaculos
+
+>>>>> Trailer
+Animações
+Finalizações melhores
+Música
+Deixar bonito
+Mudar o pulo
+
+
+
+Ideias megalomaniacas
+(segunda semana)
+
+Ao inves de render do blender ser uma cena ou animação (menu, derrota e vitoria)
+A porra das 3 imagens explicando a lore
+Mudança de cenário nas fasse
+O efeito do coletavel 
+Cenario mexendo
+A quinta fase secreta
+Imagenszinhas do pessoal
+
+HIPER MEGALOMANIACAS
+Ter um modo espacial para cada coletavel
+
+
+0.001 * 50 => 0.05 stress por segundo * 0.5 * 10
+
+stressGrowth * fps * segundosMedida (* 10)
+
