@@ -55,7 +55,9 @@ public class TilesGenerator : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando || !hasStarted)
             return;
 
-        transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * moveSpeed); // Move este objeto para frente
+        float extraSpeed = GameManager.Instance.SpeedMultByStress;
+
+        transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * moveSpeed * extraSpeed); // Move este objeto para frente
 
         // Esse if verifica se o objeto 0 da lista (o primeiro) passou da visão da câmera no eixo X negativo,
         // ou seja, se ele está à esquerda da câmera, fora da área de renderização

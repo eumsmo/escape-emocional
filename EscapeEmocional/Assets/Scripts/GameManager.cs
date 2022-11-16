@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour {
         } 
     }
 
-
-
     public Text _Text;
     private int points = 0;
     public int maxPoints = 10;
 
     public bool isImortal = false;
-
+    public float stress = 0, stressGrowth = 0.001f, limiarToDouble = 10;
+    public float speedVisualizer;
+    public float SpeedMultByStress { get { return 1 + stress / limiarToDouble; } }
 
     private void Awake() {
         Instance = this;
@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         _currentState = GameState.Jogando;
         SetPoints(0);
+    }
+
+    void FixedUpdate() {
+        stress += stressGrowth;
+        speedVisualizer = SpeedMultByStress;
     }
 
     // Handle de estados
