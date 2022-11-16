@@ -15,9 +15,18 @@ public class TilesGenerator : MonoBehaviour
 
     public static TilesGenerator Instance;
 
+    public bool startAtStart = true;
+    bool hasStarted = false;
+
     private void Start()
     {
         Instance = this;
+        if (startAtStart)
+            GenerateStartingTiles();
+    }
+
+    public void GenerateStartingTiles()
+    {
         Vector3 spawnPos = startPoint.position;
         int tilesNoObstacleTemp = tilesNoObstacle;
 
@@ -36,12 +45,14 @@ public class TilesGenerator : MonoBehaviour
             currentTile.transform.SetParent(transform); // Tiles viram filhos do objeto
             spawnedTiles.Add(currentTile); // Adiciona o tile na lista
         }
+
+        hasStarted = true;
     }
 
     private void Update()
     {
         // Caso o jogo não esteja em andamento, não faz nada
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando)
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Jogando || !hasStarted)
             return;
 
         transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * moveSpeed); // Move este objeto para frente

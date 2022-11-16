@@ -23,18 +23,11 @@ public class MenuController : MonoBehaviour {
 
     public void SelecionaFaseAnterior() {
         FaseMaster.faseId--;
-        if (FaseMaster.faseId < 0) {
-            FaseMaster.faseId = selecoesFases.Length - 1;
-        }
-
         AtualizaUI();
     }
 
     public void SelecionaProximaFase() {
         FaseMaster.faseId++;
-        if (FaseMaster.faseId >= selecoesFases.Length) {
-            FaseMaster.faseId = 0;
-        }
         AtualizaUI();
     }
 
