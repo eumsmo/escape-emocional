@@ -13,6 +13,7 @@ public class ButtonPause : MonoBehaviour
     public void UpdatePanelVisibility()
     {
         bool isGamePaused = GameManager.Instance.CurrentState == GameManager.GameState.Pausa;
+        Debug.Log(isGamePaused);
         panel.SetActive(isGamePaused);
     }
 
