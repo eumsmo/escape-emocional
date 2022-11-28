@@ -1494,7 +1494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -2002,7 +2002,7 @@ MonoBehaviour:
   downForce: 4
   downTime: 0
   downTimer: 1
-  usarTeclado: 0
+  usarTeclado: 1
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
