@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour {
 
     void HandleMorreuState() {
         Debug.Log("Morreu");
-        Invoke("LoadScenePerdeu", 1f);
+        PlayerController.instance.PlayerDie();
+        Invoke("LoadScenePerdeu", 2f);
     }
 
     public void LoadScenePerdeu() {
