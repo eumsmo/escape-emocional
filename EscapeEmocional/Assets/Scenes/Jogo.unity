@@ -571,6 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -652,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b94f877ff31ce42b26813b79f56779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fasePrefab: {fileID: 4065100345698229442, guid: 345ea4090f1340b4fafd108826f1f514, type: 3}
+  fasePrefab: {fileID: 4065100345698229442, guid: 3434fc37f454b5d489d0046aa9b563d1, type: 3}
   faseId: 3
 --- !u!1 &251497668
 GameObject:
