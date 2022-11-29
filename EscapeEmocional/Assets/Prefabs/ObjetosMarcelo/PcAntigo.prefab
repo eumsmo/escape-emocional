@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2068624172769090770}
   - component: {fileID: 972283161962868111}
   - component: {fileID: 5090055513400077321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PcAntigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49f916b911222774298f3629e6472ca5, type: 2}
+  - {fileID: 2100000, guid: 829ef65fa6658b14ea8e54003217dcfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

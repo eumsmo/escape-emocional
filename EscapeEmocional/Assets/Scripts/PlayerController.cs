@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] players;
     GameObject player;
 
-
+    public Animator[] m_Animator;
 
     GestosController controladorGestos = new GestosController();
 
@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
     public LayerMask groundLayerMask;
     public bool taNoChao;
     BoxCollider currentCollider;
+
+    public static PlayerController instance;
 
     void UpdateCurrentCollider() {
         string estadoPlayer = downTime == 0 ? "EmPe" : "Deitado";
@@ -68,8 +70,13 @@ public class PlayerController : MonoBehaviour {
         UpdateCurrentCollider();
     }
 
+    public void PlayerDie() {
+        m_Animator[activePlayerIndex].SetTrigger("Die");
+    }
+
     void Start() {
         //currentPos = PlayerPos.Middle;
+        instance = this;
         rb = GetComponent<Rigidbody>();
         originalCamPos = cameraObj.transform.position;
         cameraTarget = originalCamPos;
@@ -93,9 +100,11 @@ public class PlayerController : MonoBehaviour {
 
             if (movimento == "cima" && taNoChao) {
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                m_Animator[activePlayerIndex].SetTrigger("Jump");
                 PlayerDown(false);
             } else if (movimento == "baixo") {
                 PlayerDown(true);
+                m_Animator[activePlayerIndex].SetTrigger("Slide");
                 if (!taNoChao)
                     rb.AddForce(down * downForce, ForceMode.Impulse);
             }

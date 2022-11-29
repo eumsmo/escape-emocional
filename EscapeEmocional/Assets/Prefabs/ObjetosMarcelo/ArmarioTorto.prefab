@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2249847895883368095}
   - component: {fileID: 1488831935893955165}
   - component: {fileID: 6993949159939841478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmarioTorto
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

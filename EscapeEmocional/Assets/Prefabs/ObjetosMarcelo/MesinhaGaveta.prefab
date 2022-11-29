@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4368443960002649853}
   - component: {fileID: 872454520512721918}
   - component: {fileID: 4822684989201035091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MesinhaGaveta
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
