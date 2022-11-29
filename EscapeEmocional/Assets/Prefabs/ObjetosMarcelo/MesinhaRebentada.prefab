@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4695058822643148434}
   - component: {fileID: 7477199944623758943}
   - component: {fileID: 1506780949683399177}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MesinhaRebentada
   m_TagString: Untagged
   m_Icon: {fileID: 0}

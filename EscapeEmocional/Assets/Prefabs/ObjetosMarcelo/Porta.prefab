@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3660430881541335443}
   - component: {fileID: 9048163597328504224}
   - component: {fileID: 8062941930942827857}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}

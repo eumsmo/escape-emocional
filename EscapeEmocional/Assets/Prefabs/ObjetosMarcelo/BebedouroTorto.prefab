@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1222171482380454920}
   - component: {fileID: 7345383735924756695}
   - component: {fileID: 6894023709153509193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BebedouroTorto
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

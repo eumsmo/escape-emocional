@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 488506258601851243}
   - component: {fileID: 6455037877228548470}
   - component: {fileID: 5404309660954349986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MesinhaCerta
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

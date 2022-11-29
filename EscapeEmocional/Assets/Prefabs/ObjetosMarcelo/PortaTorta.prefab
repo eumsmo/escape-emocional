@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4166645056900539925}
   - component: {fileID: 85448729351950144}
   - component: {fileID: 5852988618250008508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PortaTorta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
