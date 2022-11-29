@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - X_Axis: 0
-    - Y_Axis: 0.15
+    - Y_Axis: 0
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
