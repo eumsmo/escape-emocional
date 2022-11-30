@@ -92,8 +92,11 @@ public class PlayerController : MonoBehaviour {
 
         // Checa se houve algum input e se o jogador está no chão
         bool ocorreuInput = usarTeclado ? controladorGestos.InputTeclado() : controladorGestos.ChecaGestos();
-        taNoChao = IsGrounded();
-
+        bool auxTaNoChao = IsGrounded();
+        if (taNoChao == false && auxTaNoChao == true) {
+            m_Animator[activePlayerIndex].SetTrigger("Land");
+        }
+        taNoChao = auxTaNoChao;
         // Caso tenha ocorrido algum input, atualiza a posição do jogador
         if (ocorreuInput) {
             string movimento = controladorGestos.movimento;
