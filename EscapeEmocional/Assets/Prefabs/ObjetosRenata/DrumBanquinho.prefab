@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3983010035732658194}
   - component: {fileID: 5215994032990104295}
   - component: {fileID: 586701122926470036}
+  - component: {fileID: 7347187325473703443}
   m_Layer: 0
   m_Name: DrumBanquinho
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7347187325473703443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426532120582536302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0026513468, y: 0.003421471, z: 0.0048717544}
+  m_Center: {x: 0.00013836264, y: -0.00009262927, z: 0.00003981158}

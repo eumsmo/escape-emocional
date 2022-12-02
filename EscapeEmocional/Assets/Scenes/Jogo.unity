@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1926,7 +1927,7 @@ MonoBehaviour:
   m_Animator:
   - {fileID: 1591556793}
   - {fileID: 658324184}
-  - {fileID: 0}
+  - {fileID: 1591556793}
   - {fileID: 1926284273}
   jump: {x: 0, y: 2, z: 0}
   down: {x: 0, y: -2, z: 0}
@@ -1938,7 +1939,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  taNoChao: 0
+  taNoChao: 1
 --- !u!4 &1006662532
 Transform:
   m_ObjectHideFlags: 0
