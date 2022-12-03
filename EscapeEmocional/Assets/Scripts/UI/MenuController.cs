@@ -22,12 +22,16 @@ public class MenuController : MonoBehaviour {
     }
 
     public void SelecionaFaseAnterior() {
-        FaseMaster.faseId--;
+        // FaseMaster.faseId--;
+        if (FaseMaster.faseId == 0) FaseMaster.faseId = 2;
+        else FaseMaster.faseId = 0;
         AtualizaUI();
     }
 
     public void SelecionaProximaFase() {
-        FaseMaster.faseId++;
+        // FaseMaster.faseId++;
+        if (FaseMaster.faseId == 0) FaseMaster.faseId = 2;
+        else FaseMaster.faseId = 0;
         AtualizaUI();
     }
 
