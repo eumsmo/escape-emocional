@@ -273,9 +273,14 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Luis Felipe (Lip\xE3o)\nMarcelo La Carretta\nLeon Matos\nArtur Martins
-    Mol\nSinaide Nunes\nMichele Nery"
+    m_LineSpacing: 0.75
+  m_Text: 'Horror Rock (LeonimuZ)
+
+
+    it''s in the fog (Darren Curtin)
+
+
+    freesound.org'
 --- !u!222 &70591503
 CanvasRenderer:
   m_ObjectHideFlags: 0
