@@ -10,6 +10,11 @@ public class MixerController : MonoBehaviour
     public Slider sldVolume;
     public Slider sldMusic;
 
+    void Start() {
+        sldVolume.value = mixer.GetFloat("FX", out float volume) ? volume : 0;
+        sldMusic.value = mixer.GetFloat("Music", out float music) ? music : 0;
+    }
+
 
     public void ChangeVolume()
     {

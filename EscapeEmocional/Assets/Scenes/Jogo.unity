@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 471de81487f5ddb45ac756581141d4a1, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -606,6 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288144370}
   - component: {fileID: 288144371}
+  - component: {fileID: 288144372}
   m_Layer: 0
   m_Name: Musica Marcelo
   m_TagString: Untagged
@@ -640,7 +641,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -3699493980971386310, guid: ba84bd8c7906b6044be5301b9d730411, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3f201ec4664494d409fe4f7bdb3831a5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -724,6 +725,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &288144372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288144369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f844d168a5fbd547a5d3dc56bec2e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1577306361}
 --- !u!1 &352330039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2207,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2267,19 +2280,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 13.272, y: 0.014, z: -0.169}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5feba14e29e705c49ab656f133034d83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curveStrength: -0.026
 --- !u!1001 &998024687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3903,6 +3903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1141167976}
+  musica: {fileID: 0}
 --- !u!1 &1584334996
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,8 +4429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1682266730}
   - component: {fileID: 1682266733}
-  - component: {fileID: 1682266732}
-  - component: {fileID: 1682266731}
   m_Layer: 5
   m_Name: PontosHolder
   m_TagString: Untagged
@@ -4458,92 +4457,6 @@ RectTransform:
   m_AnchoredPosition: {x: -109.02505, y: -107.00003}
   m_SizeDelta: {x: 218.05, y: 129.554}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1682266731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682266729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1682266732}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: MostraMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1682266732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682266729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1682266733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4746,6 +4659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1141167976}
+  musica: {fileID: 0}
 --- !u!1 &1780836450
 GameObject:
   m_ObjectHideFlags: 0
@@ -5129,6 +5043,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 829ef65fa6658b14ea8e54003217dcfe, type: 2}
   - {fileID: 2100000, guid: 6b9e597881054df438bb4bff1ca6e6d2, type: 2}
+  - {fileID: 2100000, guid: 0ed059821eab41e4da51b8936b2e1c99, type: 2}
 --- !u!4 &1839678008
 Transform:
   m_ObjectHideFlags: 0
@@ -5388,6 +5303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2085159912}
   - component: {fileID: 2085159913}
+  - component: {fileID: 2085159914}
   m_Layer: 0
   m_Name: Musica Renata
   m_TagString: Untagged
@@ -5506,6 +5422,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2085159914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085159911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f844d168a5fbd547a5d3dc56bec2e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1577306361}
 --- !u!1 &2087742598
 GameObject:
   m_ObjectHideFlags: 0

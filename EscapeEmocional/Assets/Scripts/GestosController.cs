@@ -12,7 +12,9 @@ public class GestosController {
     public bool ChecaGestos() {
         if (Input.touchCount == 4 && hasHadFirstTouch) {
             // 4 Toques ativam o cheat de trocar de fase
-            FaseMaster.faseId++;
+            //FaseMaster.faseId++;
+            if (FaseMaster.faseId == 0) FaseMaster.faseId = 2;
+            else FaseMaster.faseId = 0;
             SceneManager.LoadScene("Jogo");
         } else if (Input.touchCount == 5) {
             // 5 Toques ativam o cheat de ser imortal

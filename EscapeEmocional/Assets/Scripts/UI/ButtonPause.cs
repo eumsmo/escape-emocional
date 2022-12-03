@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class ButtonPause : MonoBehaviour
 {
-    public GameObject panel;
+    public GameObject panel, musica;
 
+    public void SetMusicaGameObject(GameObject musica) {
+        this.musica = musica;
+    }
 
     void Awake()
     {
-        SairPause();
+        UpdatePanelVisibility();
     }
     
     public void UpdatePanelVisibility()
     {
         bool isGamePaused = GameManager.Instance.CurrentState == GameManager.GameState.Pausa;
-        Debug.Log(isGamePaused);
         panel.SetActive(isGamePaused);
     }
 
@@ -25,6 +27,9 @@ public class ButtonPause : MonoBehaviour
         Time.timeScale = 0;
         GameManager.Instance.CurrentState = GameManager.GameState.Pausa;
         UpdatePanelVisibility();
+
+        if (musica != null)
+            musica.GetComponent<AudioSource>().Pause();
     }
     
     public void SairPause()
@@ -32,5 +37,8 @@ public class ButtonPause : MonoBehaviour
         Time.timeScale = 1;
         GameManager.Instance.CurrentState = GameManager.GameState.Jogando;
         UpdatePanelVisibility();
+
+        if (musica != null)
+            musica.GetComponent<AudioSource>().Play();
     }
 }

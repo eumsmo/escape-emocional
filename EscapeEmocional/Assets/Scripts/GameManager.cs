@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         _currentState = GameState.Jogando;
         SetPoints(0);
+        Time.timeScale = 1;
     }
 
     void FixedUpdate() {
