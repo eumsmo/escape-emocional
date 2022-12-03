@@ -8,11 +8,15 @@ public class MixerController : MonoBehaviour
 {
     public AudioMixer mixer;
     public Slider sldVolume;
+    public Slider sldMusic;
 
 
     public void ChangeVolume()
     {
-        mixer.SetFloat("FX",sldVolume.value);
+        mixer.SetFloat("FX", (sldVolume.value));
     }
-   
+    public void ChangeMusic()
+    {
+        mixer.SetFloat("Music", (sldMusic.value));
+    }
 }
